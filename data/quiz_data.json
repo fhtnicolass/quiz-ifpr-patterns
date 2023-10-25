@@ -1,0 +1,64 @@
+{
+    "perguntas": [
+      {
+        "pergunta": "Quem é o protagonista de Dragon Ball Z?",
+        "alternativas": ["Goku", "Vegeta", "Gohan", "Piccolo"],
+        "resposta_correta": 0,
+        "nivel_de_dificuldade": "Fácil"
+      },
+      {
+        "pergunta": "Qual é a técnica de combate mais famosa de Goku?",
+        "alternativas": ["Kamehameha", "Rasengan", "Chidori", "Bankai"],
+        "resposta_correta": 0,
+        "nivel_de_dificuldade": "Fácil"
+      },
+      {
+        "pergunta": "Quem é o príncipe dos Saiyajins?",
+        "alternativas": ["Goku", "Gohan", "Vegeta", "Krillin"],
+        "resposta_correta": 2,
+        "nivel_de_dificuldade": "Fácil"
+      },
+      {
+        "pergunta": "Qual é o nome do planeta natal de Goku?",
+        "alternativas": ["Namekusei", "Terra", "Vegeta", "Planeta dos Macacos"],
+        "resposta_correta": 2,
+        "nivel_de_dificuldade": "Médio"
+      },
+      {
+        "pergunta": "Qual é o nome da androide criada pelo Dr. Gero?",
+        "alternativas": ["Android 17", "Android 18", "Android 19", "Android 20"],
+        "resposta_correta": 1,
+        "nivel_de_dificuldade": "Médio"
+      },
+      {
+        "pergunta": "Quem é o mestre de Goku?",
+        "alternativas": ["Korin", "Mestre Kame", "Mestre Roshi", "Kaioshin"],
+        "resposta_correta": 2,
+        "nivel_de_dificuldade": "Fácil"
+      },
+      {
+        "pergunta": "Qual é a transformação mais poderosa de Goku?",
+        "alternativas": ["Super Saiyajin 1", "Super Saiyajin 2", "Super Saiyajin 3", "Ultra Instinto"],
+        "resposta_correta": 3,
+        "nivel_de_dificuldade": "Difícil"
+      },
+      {
+        "pergunta": "Quem é o vilão principal na saga de Cell?",
+        "alternativas": ["Freeza", "Majin Buu", "Cell", "Vegeta"],
+        "resposta_correta": 2,
+        "nivel_de_dificuldade": "Médio"
+      },
+      {
+        "pergunta": "Qual é o nome do pai de Goku?",
+        "alternativas": ["Raditz", "Bardock", "Nappa", "King Vegeta"],
+        "resposta_correta": 1,
+        "nivel_de_dificuldade": "Fácil"
+      },
+      {
+        "pergunta": "Qual é a última esfera do dragão que Goku e seus amigos procuram?",
+        "alternativas": ["Esfera do Dragão 1", "Esfera do Dragão 6", "Esfera do Dragão 7", "Esfera do Dragão 4"],
+        "resposta_correta": 2,
+        "nivel_de_dificuldade": "Difícil"
+      }
+    ]
+  }
