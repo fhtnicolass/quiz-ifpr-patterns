@@ -1,0 +1,119 @@
+{
+    "perguntas": [
+      {
+        "pergunta": "Quem é o protagonista de Dragon Ball Z?",
+        "alternativas": ["Goku", "Vegeta", "Gohan", "Piccolo"],
+        "resposta_correta": 0,
+        "nivel_de_dificuldade": "Fácil"
+      },
+      {
+        "pergunta": "Qual é a técnica de combate mais famosa de Goku?",
+        "alternativas": ["Kamehameha", "Rasengan", "Chidori", "Bankai"],
+        "resposta_correta": 0,
+        "nivel_de_dificuldade": "Fácil"
+      },
+      {
+        "pergunta": "Quem é o príncipe dos Saiyajins?",
+        "alternativas": ["Goku", "Gohan", "Vegeta", "Krillin"],
+        "resposta_correta": 2,
+        "nivel_de_dificuldade": "Fácil"
+      },
+      {
+        "pergunta": "Qual é o nome do planeta natal de Goku?",
+        "alternativas": ["Namekusei", "Terra", "Vegeta", "Planeta dos Macacos"],
+        "resposta_correta": 2,
+        "nivel_de_dificuldade": "Médio"
+      },
+      {
+        "pergunta": "Quem é o mestre de Goku?",
+        "alternativas": ["Korin", "Mestre Kame", "Mestre Roshi", "Kaioshin"],
+        "resposta_correta": 2,
+        "nivel_de_dificuldade": "Fácil"
+      },
+      {
+        "pergunta": "Qual é a transformação mais poderosa de Goku?",
+        "alternativas": ["Super Saiyajin 1", "Super Saiyajin 2", "Super Saiyajin 3", "Ultra Instinto"],
+        "resposta_correta": 3,
+        "nivel_de_dificuldade": "Difícil"
+      },
+      {
+        "pergunta": "Quem é o vilão principal na saga de Cell?",
+        "alternativas": ["Freeza", "Majin Buu", "Cell", "Vegeta"],
+        "resposta_correta": 2,
+        "nivel_de_dificuldade": "Médio"
+      },
+      {
+        "pergunta": "Qual é o nome do pai de Goku?",
+        "alternativas": ["Raditz", "Bardock", "Nappa", "King Vegeta"],
+        "resposta_correta": 1,
+        "nivel_de_dificuldade": "Fácil"
+      },
+      {
+        "pergunta": "Qual é o nome da esposa de Goku?",
+        "alternativas": ["Chi-Chi", "Bulma", "Videl", "Launch"],
+        "resposta_correta": 0,
+        "nivel_de_dificuldade": "Médio"
+      },
+      {
+        "pergunta": "Quem é o androide mais perigoso em Dragon Ball Z?",
+        "alternativas": ["Android 17", "Android 18", "Cell", "Android 19"],
+        "resposta_correta": 2,
+        "nivel_de_dificuldade": "Difícil"
+      },
+      {
+        "pergunta": "Onde Goku treinou para se tornar um Super Saiyajin?",
+        "alternativas": ["Planeta Namekusei", "Planeta Vegeta", "Planeta Terra", "Planeta Kaio"],
+        "resposta_correta": 3,
+        "nivel_de_dificuldade": "Médio"
+      },
+      {
+        "pergunta": "Qual é a fusão de Goku e Vegeta?",
+        "alternativas": ["Gogeta", "Vegito", "Gotenks", "Kibito-Kaioshin"],
+        "resposta_correta": 1,
+        "nivel_de_dificuldade": "Médio"
+      },
+      {
+        "pergunta": "Qual é a última transformação de Freeza?",
+        "alternativas": ["Segunda Forma", "Forma Final", "Forma de Ouro", "Forma Máxima"],
+        "resposta_correta": 2,
+        "nivel_de_dificuldade": "Difícil"
+      },
+      {
+        "pergunta": "Quem é o guerreiro mais forte do Universo 11 no Torneio do Poder?",
+        "alternativas": ["Toppo", "Jiren", "Dyspo", "Hit"],
+        "resposta_correta": 1,
+        "nivel_de_dificuldade": "Médio"
+      },
+      {
+        "pergunta": "Qual é o nome da técnica de teletransporte usada por Goku?",
+        "alternativas": ["Kai-Kai", "Shunkan-Ido", "Instant Transmission", "Solar Flare"],
+        "resposta_correta": 2,
+        "nivel_de_dificuldade": "Médio"
+      },
+      {
+        "pergunta": "Qual é a primeira transformação de Goku na série Dragon Ball Z?",
+        "alternativas": ["Kaioken", "Super Saiyajin", "Great Ape", "Ultra Instinct"],
+        "resposta_correta": 0,
+        "nivel_de_dificuldade": "Fácil"
+      },
+      {
+        "pergunta": "Quem é o deus da destruição do Universo 7?",
+        "alternativas": ["Whis", "Goku", "Lord Beerus", "Kaioshin"],
+        "resposta_correta": 2,
+        "nivel_de_dificuldade": "Médio"
+      },
+      {
+        "pergunta": "O que Goku prefere fazer na maior parte do tempo?",
+        "alternativas": ["Comer", "Dormir", "Treinar", "Lutar"],
+        "resposta_correta": 2,
+        "nivel_de_dificuldade": "Fácil"
+      },
+      {
+        "pergunta": "Quem é o rival eterno de Goku?",
+        "alternativas": ["Piccolo", "Vegeta", "Gohan", "Mr. Satan"],
+        "resposta_correta": 1,
+        "nivel_de_dificuldade": "Médio"
+      }
+    ]
+  }
+  

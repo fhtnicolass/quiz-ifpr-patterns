@@ -28,3 +28,7 @@ class Quiz:
         for pergunta in self.perguntas:
             pergunta.mostrar_pergunta()
 
+
+
+
+
