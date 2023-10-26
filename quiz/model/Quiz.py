@@ -1,5 +1,5 @@
-import random
-from flask import jsonify  # Importe jsonify aqui
+from flask import jsonify
+
 
 class Quiz:
     _instance = None
@@ -16,19 +16,23 @@ class Quiz:
         return self.perguntas[self.pergunta_atual]
 
     def responder_pergunta(self, alternativa_escolhida):
-        # Lógica para verificar a resposta e calcular a pontuação
-        if alternativa_escolhida == self.perguntas[self.pergunta_atual].resposta_correta:
-            self.pontuacao += 1
-            return jsonify({'resultado': 'Resposta correta'})
+        pergunta_atual = self.perguntas[self.pergunta_atual]
+
+        if alternativa_escolhida == pergunta_atual.resposta_correta:
+            self.pontuacao += self.calcular_pontuacao(pergunta_atual.nivel_de_dificuldade)
+            resultado = 'Resposta correta'
+        else:
+            resultado = 'Resposta incorreta'
+
         self.pergunta_atual += 1
-        return jsonify({'resultado': 'Resposta incorreta'})
+        return jsonify({'resultado': resultado})
 
-    def jogar(self):
-        random.shuffle(self.perguntas)
-        for pergunta in self.perguntas:
-            pergunta.mostrar_pergunta()
-
-
-
-
-
+    def calcular_pontuacao(self, nivel_de_dificuldade):
+        if nivel_de_dificuldade == 'Fácil':
+            return 1
+        elif nivel_de_dificuldade == 'Médio':
+            return 2
+        elif nivel_de_dificuldade == 'Difícil':
+            return 3
+        else:
+            return 0
