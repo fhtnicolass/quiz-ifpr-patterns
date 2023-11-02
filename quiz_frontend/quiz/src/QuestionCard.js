@@ -8,9 +8,9 @@ function QuestionCard({ question, onAnswer }) {
         <Typography variant="h6" gutterBottom>
           Pergunta: {question.pergunta}
         </Typography>
-        <ul>
+        <ul style={{marginTop: 10}}>
           {question.alternativas && question.alternativas.map((alternativa, index) => (
-            <li key={index}>
+            <li style={{marginTop: 10}}key={index}>
               <Button
                 variant="outlined"
                 onClick={() => onAnswer(index)}

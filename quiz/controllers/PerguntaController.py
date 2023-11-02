@@ -24,6 +24,14 @@ for pergunta_json in perguntas_json:
 
 quiz = Quiz(perguntas)
 
+
+@pergunta_controller.route('/teste', methods=['GET'])
+def teste():
+    teste = "/teste controller"
+    print(teste)
+    return teste
+
+
 @pergunta_controller.route('/pergunta', methods=['GET'])
 def obter_pergunta():
     pergunta_atual = quiz.obter_pergunta_atual()

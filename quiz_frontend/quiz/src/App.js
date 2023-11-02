@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   carregarPergunta() {
-    fetch('/pergunta') // Altere a URL, se necessário
+    fetch('http://127.0.0.1:5000/quiz/pergunta') // Altere a URL, se necessário
       .then((response) => response.json())
       .then((data) => {
         this.setState({
@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   responderPergunta(alternativa_escolhida) {
-    fetch(`/responder/${alternativa_escolhida}`, {
+    fetch(`http://127.0.0.1:5000/quiz/responder/${alternativa_escolhida}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ class App extends Component {
   }
 
   reiniciarJogo() {
-    fetch('/reiniciar', {
+    fetch('http://127.0.0.1:5000/quiz/reiniciar', {
       method: 'POST',
     })
       .then((response) => response.json())

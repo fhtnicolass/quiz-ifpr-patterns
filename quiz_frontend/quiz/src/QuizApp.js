@@ -1,48 +1,56 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Typography, Button } from '@mui/material';
+import { Container, Typography, Button, Snackbar } from '@mui/material';
 import QuestionCard from './QuestionCard';
+import * as QuizService from './services/QuizServices'; // Certifique-se de que o caminho esteja correto
 
 function QuizApp() {
   const [question, setQuestion] = useState({});
   const [score, setScore] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
-    // Fazer uma chamada para a sua API Flask e obter a primeira pergunta ao carregar o componente
-    // Substitua 'your-api-endpoint' pela URL da sua API Flask
-    fetch('your-api-endpoint/pergunta')
-      .then((response) => response.json())
+    QuizService.obterPergunta()
       .then((data) => setQuestion(data))
       .catch((error) => console.error('Erro ao carregar pergunta:', error));
   }, []);
 
   const handleAnswer = (selectedAnswer) => {
-    // Fazer uma chamada para a sua API Flask para responder à pergunta
-    fetch(`your-api-endpoint/responder/${selectedAnswer}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ alternativa_escolhida: selectedAnswer }),
-    })
-      .then((response) => response.json())
+    QuizService.responderPergunta(selectedAnswer)
       .then((data) => {
-        setScore(data.pontuacao);
-        setQuestion(data.pergunta);
+        if (data.resultado === 'correta') {
+          setMessage('Resposta correta! Você acertou.');
+          return QuizService.obterPergunta(); // Obter a próxima pergunta após uma resposta correta
+        } else {
+          setMessage('Resposta incorreta! Você errou.');
+          return null; // Retorna null para evitar processamento adicional
+        }
       })
+      .then((data) => {
+        if (data) {
+          setQuestion(data);
+        }
+        setOpen(true);
+        return QuizService.obterPontuacao();
+      })
+      .then((data) => setScore(data.pontuacao))
       .catch((error) => console.error('Erro ao responder à pergunta:', error));
   };
 
+  const handleSnackbarClose = () => {
+    setOpen(false);
+  };
+
   const handleRestart = () => {
-    // Fazer uma chamada para a sua API Flask para reiniciar o jogo
-    fetch('your-api-endpoint/reiniciar', {
-      method: 'POST',
-    })
-      .then((response) => response.json())
+    QuizService.reiniciarJogo()
       .then((data) => {
         setScore(0);
-        setQuestion(data.pergunta);
       })
       .catch((error) => console.error('Erro ao reiniciar o jogo:', error));
+
+    QuizService.obterPergunta()
+      .then((data) => setQuestion(data))
+      .catch((error) => console.error('Erro ao carregar pergunta:', error));
   };
 
   return (
@@ -51,12 +59,18 @@ function QuizApp() {
         Quiz App
       </Typography>
       <QuestionCard question={question} onAnswer={handleAnswer} />
-      <Typography variant="h5" gutterBottom>
+      <Typography variant="h5" gutterBottom style={{ marginTop: 10 }}>
         Pontuação: {score}
       </Typography>
       <Button variant="contained" color="primary" onClick={handleRestart}>
         Reiniciar Jogo
       </Button>
+      <Snackbar
+        open={open}
+        autoHideDuration={3000}
+        onClose={handleSnackbarClose}
+        message={message}
+      />
     </Container>
   );
 }

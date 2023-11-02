@@ -16,16 +16,19 @@ class Quiz:
         return self.perguntas[self.pergunta_atual]
 
     def responder_pergunta(self, alternativa_escolhida):
-        pergunta_atual = self.perguntas[self.pergunta_atual]
+        if self.pergunta_atual < len(self.perguntas):
+            pergunta_atual = self.perguntas[self.pergunta_atual]
 
-        if alternativa_escolhida == pergunta_atual.resposta_correta:
-            self.pontuacao += self.calcular_pontuacao(pergunta_atual.nivel_de_dificuldade)
-            resultado = 'Resposta correta'
+            if alternativa_escolhida == pergunta_atual.resposta_correta:
+                self.pontuacao += self.calcular_pontuacao(pergunta_atual.nivel_de_dificuldade)
+                resultado = 'correta'
+            else:
+                resultado = 'incorreta'
+
+            self.pergunta_atual += 1
+            return jsonify({'resultado': resultado})
         else:
-            resultado = 'Resposta incorreta'
-
-        self.pergunta_atual += 1
-        return jsonify({'resultado': resultado})
+            return jsonify({'resultado': 'sem_pergunta'})
 
     def calcular_pontuacao(self, nivel_de_dificuldade):
         if nivel_de_dificuldade == 'Fácil':
