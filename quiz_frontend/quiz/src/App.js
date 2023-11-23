@@ -23,8 +23,10 @@ class App extends Component {
         this.setState({
           pergunta: data.pergunta,
           alternativas: data.alternativas,
+          nivel_de_dificuldade: data.nivel_de_dificuldade,
           mensagem: '',
         });
+        console.log(data)
       })
       .catch((error) => {
         console.error('Erro ao carregar a pergunta:', error);

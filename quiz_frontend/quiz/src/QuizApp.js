@@ -8,6 +8,7 @@ function QuizApp() {
   const [score, setScore] = useState(0);
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
+  const [canAnswer, setCanAnswer] = useState(true); // Nova variável de estado
 
   useEffect(() => {
     QuizService.obterPergunta()
@@ -16,26 +17,39 @@ function QuizApp() {
   }, []);
 
   const handleAnswer = (selectedAnswer) => {
+    if (!canAnswer) {
+      // Se não puder responder, retorne
+      return;
+    }
+
+    setCanAnswer(false); // Desabilita a capacidade de responder
+
     QuizService.responderPergunta(selectedAnswer)
       .then((data) => {
         if (data.resultado === 'correta') {
           setMessage('Resposta correta! Você acertou.');
-          return QuizService.obterPergunta(); // Obter a próxima pergunta após uma resposta correta
         } else {
           setMessage('Resposta incorreta! Você errou.');
-          return null; // Retorna null para evitar processamento adicional
         }
-      })
-      .then((data) => {
-        if (data) {
-          setQuestion(data);
-        }
+
         setOpen(true);
-        return QuizService.obterPontuacao();
+
+        // Introduzir um atraso de 2 segundos antes de obter a próxima pergunta
+        setTimeout(() => {
+          QuizService.obterPergunta()
+            .then((data) => {
+              setQuestion(data);
+              setCanAnswer(true); // Habilita a capacidade de responder novamente
+              return QuizService.obterPontuacao();
+            })
+            .then((data) => setScore(data.pontuacao))
+            .catch((error) => console.error('Erro ao obter a próxima pergunta:', error));
+        }, 2000);
       })
-      .then((data) => setScore(data.pontuacao))
       .catch((error) => console.error('Erro ao responder à pergunta:', error));
   };
+
+  
 
   const handleSnackbarClose = () => {
     setOpen(false);
