@@ -1,3 +1,4 @@
+
 from strategy.DifficultyStrategy import EasyDifficultyStrategy,MediumDifficultyStrategy,HardDifficultyStrategy
 class Pergunta:
     def __init__(self, pergunta, alternativas, resposta_correta, nivel_de_dificuldade):
@@ -32,3 +33,7 @@ class PerguntaFactory:
             pergunta_data["resposta_correta"],
             pergunta_data["nivel_de_dificuldade"]
         )
+
+
+
+

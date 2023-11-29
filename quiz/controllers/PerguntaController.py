@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from model.Quiz import Quiz
 from model.Pergunta import Pergunta
 import os
-import json
+import json 
 
 pergunta_controller = Blueprint('pergunta_controller', __name__)
 
@@ -19,11 +19,11 @@ perguntas_json = quiz_data["perguntas"]
 perguntas = []
 
 for pergunta_json in perguntas_json:
-    pergunta = Pergunta(pergunta_json["pergunta"], pergunta_json["alternativas"],
-                        pergunta_json["resposta_correta"], pergunta_json["nivel_de_dificuldade"])
+    pergunta = Pergunta(pergunta_json["pergunta"], pergunta_json["alternativas"], pergunta_json["resposta_correta"], pergunta_json["nivel_de_dificuldade"])
     perguntas.append(pergunta)
 
-Quiz.inicializar(perguntas)
+quiz = Quiz(perguntas)
+
 
 @pergunta_controller.route('/teste', methods=['GET'])
 def teste():
@@ -31,35 +31,29 @@ def teste():
     print(teste)
     return teste
 
+
 @pergunta_controller.route('/pergunta', methods=['GET'])
 def obter_pergunta():
-    pergunta_atual = Quiz.get_instance().obter_pergunta_atual()
+    pergunta_atual = quiz.obter_pergunta_atual()
     return jsonify({
         'pergunta': pergunta_atual.pergunta,
         'alternativas': pergunta_atual.alternativas,
-        'nivel_de_dificuldade': pergunta_atual.pergunta.nivel_de_dificuldade
     })
 
 @pergunta_controller.route('/pontuacao', methods=['GET'])
 def obter_pontuacao():
-    return jsonify({'pontuacao': Quiz.get_instance().pontuacao})
+    return jsonify({'pontuacao': quiz.pontuacao})
 
 @pergunta_controller.route('/reiniciar', methods=['POST'])
 def reiniciar_jogo():
-    Quiz.inicializar(perguntas)
+    quiz.pontuacao = 0
+    quiz.pergunta_atual = 0
     return jsonify({'mensagem': 'Jogo reiniciado'})
 
 @pergunta_controller.route('/responder/<int:alternativa_escolhida>', methods=['POST'])
 def responder_pergunta(alternativa_escolhida):
-    data = request.get_json()
+    data = request.get_json()  # Obtenha os dados do corpo da solicitação em JSON
     alternativa_escolhida = data.get("alternativa_escolhida")
 
-    quiz = Quiz.get_instance()
-    resposta_correta = quiz.obter_pergunta_atual().resposta_correta
-    pontuacao = quiz.responder_pergunta(alternativa_escolhida)
-
-    return jsonify({
-        'resultado': 'Resposta correta' if alternativa_escolhida == resposta_correta else 'Resposta incorreta',
-        'resposta_correta': resposta_correta,
-        'pontuacao': pontuacao
-    })
+    resposta = quiz.responder_pergunta(alternativa_escolhida)
+    return resposta
