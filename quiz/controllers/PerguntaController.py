@@ -38,6 +38,8 @@ def obter_pergunta():
     return jsonify({
         'pergunta': pergunta_atual.pergunta,
         'alternativas': pergunta_atual.alternativas,
+        'nivel_de_dificuldade': pergunta_atual.nivel_de_dificuldade,
+        'resposta_correta': pergunta_atual.resposta_correta
     })
 
 @pergunta_controller.route('/pontuacao', methods=['GET'])

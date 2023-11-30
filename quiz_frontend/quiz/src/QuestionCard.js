@@ -14,6 +14,22 @@ function QuestionCard({ question, onAnswer, questionNumber }) {
     onAnswer(index);
   };
 
+  // Função para calcular pontos com base no nível de dificuldade
+  const calcularPontos = () => {
+    // Certifique-se de que question.nivel_de_dificuldade não é undefined antes de chamar toLowerCase
+    const nivel = question.nivel_de_dificuldade ? question.nivel_de_dificuldade.toLowerCase() : '';
+
+    if (nivel === 'fácil') {
+      return 1;
+    } else if (nivel === 'médio') {
+      return 2;
+    } else if (nivel === 'difícil') {
+      return 3;
+    } else {
+      return 0;
+    }
+  };
+
   return (
     <Card>
       <CardContent>
@@ -38,7 +54,7 @@ function QuestionCard({ question, onAnswer, questionNumber }) {
           ))}
         </ul>
         <Typography variant="body2" style={{ marginTop: 10 }}>
-          Valor em Pontos: {question.valor_em_pontos}
+          Valor em Pontos: {calcularPontos(question.nivel_de_dificuldade)}
         </Typography>
       </CardContent>
     </Card>
