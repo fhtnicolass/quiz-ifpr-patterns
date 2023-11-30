@@ -31,16 +31,19 @@ def teste():
     print(teste)
     return teste
 
-
 @pergunta_controller.route('/pergunta', methods=['GET'])
 def obter_pergunta():
     pergunta_atual = quiz.obter_pergunta_atual()
-    return jsonify({
-        'pergunta': pergunta_atual.pergunta,
-        'alternativas': pergunta_atual.alternativas,
-        'nivel_de_dificuldade': pergunta_atual.nivel_de_dificuldade,
-        'resposta_correta': pergunta_atual.resposta_correta
-    })
+
+    if isinstance(pergunta_atual, dict) and 'resultado' in pergunta_atual and pergunta_atual['resultado'] == 'gameover':
+        return jsonify({'resultado': 'sem_pergunta'})
+    else:
+        return jsonify({
+            'pergunta': pergunta_atual.pergunta,
+            'alternativas': pergunta_atual.alternativas,
+            'nivel_de_dificuldade': pergunta_atual.nivel_de_dificuldade,
+            'resposta_correta': pergunta_atual.resposta_correta
+        })
 
 @pergunta_controller.route('/pontuacao', methods=['GET'])
 def obter_pontuacao():

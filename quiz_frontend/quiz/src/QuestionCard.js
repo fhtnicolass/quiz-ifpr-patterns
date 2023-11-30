@@ -3,10 +3,16 @@ import { Card, CardContent, Typography, Button } from '@mui/material';
 
 function QuestionCard({ question, onAnswer, questionNumber }) {
   const [userAnswer, setUserAnswer] = useState(null);
+  const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
     // Reset userAnswer quando uma nova pergunta é recebida
     setUserAnswer(null);
+
+    // Verifica se a pergunta é null, indicando que o jogo acabou
+    if (question === null) {
+      setGameOver(true);
+    }
   }, [question]);
 
   const handleAnswer = (index) => {
@@ -29,6 +35,22 @@ function QuestionCard({ question, onAnswer, questionNumber }) {
       return 0;
     }
   };
+
+  // Renderiza a tela de fim de jogo
+  if (gameOver) {
+    return (
+      <Card>
+        <CardContent>
+          <Typography variant="h6" gutterBottom>
+            Fim de Jogo
+          </Typography>
+          <Typography variant="body2" style={{ marginTop: 10 }}>
+            Sua Pontuação: {calcularPontos()}
+          </Typography>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
     <Card>
