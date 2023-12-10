@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from model.Quiz import Quiz
-from model.Pergunta import Pergunta
+from model.Pergunta import Pergunta, PerguntaFactory
 import os
 import json 
 
@@ -12,14 +12,17 @@ json_file_path = os.path.join(root_directory, 'data', 'quiz_data.json')
 
 # Crie uma instância única do Quiz usando o padrão Singleton
 # Suponha que você já tenha carregado as perguntas da mesma maneira que antes
-with open(json_file_path, 'r') as file:
+with open(json_file_path, 'r', encoding='utf-8') as file:  # Adicione 'encoding='utf-8''
     quiz_data = json.load(file)
 
 perguntas_json = quiz_data["perguntas"]
 perguntas = []
 
+# Utilize a PerguntaFactory para criar as perguntas
+pergunta_factory = PerguntaFactory()
+
 for pergunta_json in perguntas_json:
-    pergunta = Pergunta(pergunta_json["pergunta"], pergunta_json["alternativas"], pergunta_json["resposta_correta"], pergunta_json["nivel_de_dificuldade"])
+    pergunta = pergunta_factory.criar_pergunta(pergunta_json)
     perguntas.append(pergunta)
 
 quiz = Quiz(perguntas)
